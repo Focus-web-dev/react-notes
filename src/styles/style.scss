@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'clean-css';
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: $black;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+button {
+    padding: 5px 30px;
+    border-radius: 25px;
+
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    background: none;
+    color: $black;
+    border: 1px solid $black;
+
+    transition: 0.3s;
+
+    &:hover {
+        background: $black;
+        color: $white;
+    }
+}
