@@ -1,0 +1,65 @@
+.filter {
+    width: 100%;
+
+    margin-top: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    width: 100%;
+}
+
+.bx-search {
+    font-size: 32px;
+    color: $black;
+    margin-right: 15px;
+}
+
+.filter input {
+    border: 1px solid $blackLowOpacity;
+    padding: 10px 25px;
+    border-radius: 20px;
+    width: 15%;
+
+    transition: all 0.5s;
+    &:focus {
+        width: 30%;
+        border: 1px solid $black;
+    }
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tag {
+    margin: 0px 10px 10px 0px;
+    background: coral;
+    padding: 7px 15px;
+    border-radius: 20px;
+
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+        background: crimson;
+    }
+}
+
+.tag p {
+    font-size: 16px;
+    color: $white;
+}

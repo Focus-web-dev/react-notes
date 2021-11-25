@@ -1,0 +1,26 @@
+@import 'variables';
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $blackLowOpacity;
+    border-radius: 20px;
+
+    margin: 50px;
+    padding: 100px 150px;
+}
+
+.notes {
+    width: 100%;
+    margin-top: 25px;
+    
+    align-items: center;
+    justify-content: center;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

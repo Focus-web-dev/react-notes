@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'clean-css';
 
+@import 'app';
+@import 'filter';
+@import 'note';
+
 body {
     font-family: 'Raleway', sans-serif;
     color: $black;
@@ -8,20 +12,26 @@ body {
     font-size: 18px;
 }
 
+h1 {
+    font-size: 42px;
+    color: $black;
+    font-weight: 900;
+}
+
 button {
     padding: 5px 30px;
     border-radius: 25px;
 
     font-family: 'Raleway', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     background: none;
-    color: $black;
-    border: 1px solid $black;
+    color: $white;
+    border: 1px solid $white;
 
     transition: 0.3s;
 
     &:hover {
-        background: $black;
-        color: $white;
+        background: $white;
+        color: $black;
     }
 }
