@@ -1,40 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {nanoid} from 'nanoid';
 
-function Note({ id, text, tags, removeNote }) {
-
-    let [tag, setTags] = useState(tags);
-
-    function removeTag (target) {
-        setTags([...tag].filter((el)=>el !== target))
-    }
+function Note({ id, text, tags, removeNote, editNote, removeTag }) {
 
   return (
     <li key={id} className="note">
 
-        <p className="note-text">{text}</p>
+        <div className="note-content">
 
-        <div className="note-footer">
+            <p className="note-text">
+                {text}
+            </p>
 
             <ul className="tags">
 
                 {
-                    tag.map((el)=>
-                        <li key={nanoid()} className="tag" onClick={()=>removeTag(el)}>
-                            <p>{el}</p>
-                        </li>)
+                    tags.map((el)=><li key={nanoid()} className="tag" onClick={()=>removeTag(text, id, el)}><p>{el}</p></li>)
                 }
-                
+                    
             </ul>
 
-            <div className="buttons">
-
-                <button className="edit">Edit</button>
-                <button className="delete" onClick={()=>removeNote(id)}>Delete</button>
-
-            </div>
-
         </div>
+        
+        <i className='bx bx-edit-alt' onClick={()=>editNote(id, tags)}></i>
+        <i className='bx bx-trash' onClick={()=>removeNote(id)}></i>
 
     </li>
   );

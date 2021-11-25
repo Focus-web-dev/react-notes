@@ -15,8 +15,6 @@
     justify-content: center;
     align-items: center;
 
-    margin-bottom: 20px;
-
     width: 100%;
 }
 
@@ -29,12 +27,13 @@
 .filter input {
     border: 1px solid $blackLowOpacity;
     padding: 10px 25px;
+    margin: 20px;
     border-radius: 20px;
-    width: 15%;
+    width: 150px;
 
     transition: all 0.5s;
     &:focus {
-        width: 30%;
+        width: 300px;
         border: 1px solid $black;
     }
 }

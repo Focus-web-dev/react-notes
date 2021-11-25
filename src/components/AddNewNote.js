@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-function AddNewNote({ addNewNote }) {
+function AddNewNote({ noteText, setNoteText, addNewNote }) {
 
-    const [noteText, setNoteText] = useState("");
-    
     function handleChange (e) {
         setNoteText(e.target.value);
     }
@@ -14,24 +12,18 @@ function AddNewNote({ addNewNote }) {
     }
 
   return (
-    <li className="note new">
+    <div className="add-note">
 
-        <div className="note-content">
+        <h3>Add new note</h3>
 
-            <h3>Add new note</h3>
-
-            <textarea onChange={handleChange} type="text" placeholder="Type..." value={noteText}></textarea>
-
-        </div>
-
-        <div className="note-footer">
-
-            <small>200 Remaining</small>
-            <button onClick={handleSave}>Save</button>
+        <div>
+            
+            <input onChange={handleChange} type="text" placeholder="Type..." value={noteText}></input>
+            <button onClick={()=>handleSave(noteText)}>Add</button>
 
         </div>
 
-    </li>
+    </div>
   );
 }
 
