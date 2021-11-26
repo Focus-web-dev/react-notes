@@ -8,7 +8,7 @@ function NotesList({ notes, removeNote, editNote, removeTag }) {
     <ul className="notes">
 
         {
-          notes.map((note)=>(<Note key={note.id} id={note.id} text={note.text} tags={note.tags} removeNote={removeNote} editNote={editNote} removeTag={removeTag} />))
+          notes.map((note)=>(<Note key={note.id} id={note.id} text={note.text} tags={note.tags} hidden={note.hidden} removeNote={removeNote} editNote={editNote} removeTag={removeTag} />))
         }
 
     </ul>

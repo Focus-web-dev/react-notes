@@ -6,27 +6,32 @@ import NotesList from './components/NotesList';
 import AddNewNote from './components/AddNewNote';
 
 function App() {
+  
+  let [tags, setTags] = useState("");
 
   let [notes, setNotes] = useState([
     {
       id: nanoid(),
       tags: ['#1', '#2', '#3'],
-      text: 'Hello'
+      text: 'Hello',
+      hidden: false
     }
   ]);
 
   function addNewNote(text, id=nanoid()) {
+    removeFilter();
+
     let newNote = {
       id: id,
       tags: text.split(' ').filter((el) => el[0] === '#'),
-      text: text.split(' ').filter((el)=> el[0] !== '#').join(' ')
+      text: text.split(' ').filter((el)=> el[0] !== '#').join(' '),
+      hidden: false
     }
 
     setNotes([...notes, newNote]);
   }
 
   function removeTag (text, id, tag) {
-
     let currentNote = notes.find((el) => el.id === id);
     let currentTagList = currentNote.tags;
     let newTagList = currentTagList.filter((el)=>el!==tag)
@@ -34,10 +39,12 @@ function App() {
     let updatedNote = {
       id: id,
       tags: newTagList,
-      text: text
+      text: text,
+      hidden: false
     }
+
     setNotes([...notes.filter((el) => el.id !== id), updatedNote]);
-    
+    filter();
   }
 
   function removeNote (id) {
@@ -46,21 +53,32 @@ function App() {
 
   const [noteText, setNoteText] = useState("");
 
-  function editNote (id, tags) {
+  function editNote (id, tagList) {
     setNotes(notes.filter((el) => el.id !== id));
     let currentNote = notes.find((el) => el.id === id);
-    setNoteText(currentNote.text + ` ${tags.join(' ')}`);
+    setNoteText(currentNote.text + ` ${tagList.join(' ')}`);
   }
 
-  function filter (tags) {
-    tags.map((el)=>console.log(notes.map((ell)=>[ell.tags].includes(el))));
+  function filter (tag = [tags]) {
+
+    console.log(tag);
+
+    notes.map((el)=>el.tags.includes(tag) ? el.hidden = false : el.hidden = true);
+
+    setNotes([...notes]);
+  }
+
+  function removeFilter () {
+    setTags("");
+    notes.map((el)=>el.hidden === true ? el.hidden = false : el.hidden);
+    setNotes([...notes]);
   }
 
   return (
     <div className="App">
       <h1>React notes</h1>
 
-      <Filter filter={filter}/>
+      <Filter filter={filter} tags={tags} setTags={setTags} removeFilter={removeFilter} />
 
       <NotesList notes={notes} removeNote={removeNote} editNote={editNote} removeTag={removeTag} />
 

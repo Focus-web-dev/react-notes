@@ -1,38 +1,51 @@
 import React, { useState } from 'react';
 import {nanoid} from 'nanoid';
 
-function Filter({ filter }) {
+function Filter({ filter, tags, setTags, removeFilter }) {
 
-  let [tags, setTags] = useState([]);
+  // let [tags, setTags] = useState([]);
   let [tagInput, setTagInput] = useState("");
   
   function handleTagInput (e) {
     setTagInput(e.target.value);
   }
 
-  function handleAdd (tag) {
-    setTags([...tags, tag]);
+  function handleSearch (tagInput) {
+    setTags(tagInput);
     setTagInput("");
-    filter([...tags, tag]);
+    filter(tagInput);
   }
 
-  return (
-    <div className="filter">
+  if (tags !== "") {
+    return (
+      <div className="filter">
 
         <div className="filter-input">
           <i className='bx bx-search'></i>
           <input onChange={handleTagInput} type="text" placeholder="Enter #tag..." value={tagInput}></input>
-          <button onClick={()=>handleAdd(tagInput)}>Add</button>
+          <button onClick={()=>handleSearch(tagInput)}>Search</button>
         </div>
 
-        <ul className="tags">
-          {
-            tags.map((el)=><li key={nanoid()} className="tag"><p>{el}</p></li>)
-          }
-        </ul>
+        <div key={nanoid()} onClick={removeFilter} className="tag">
+          <p>{tags}</p>
+        </div>
 
       </div>
-  );
+    );
+  }
+  else {
+    return (
+      <div className="filter">
+
+        <div className="filter-input">
+          <i className='bx bx-search'></i>
+          <input onChange={handleTagInput} type="text" placeholder="Enter #tag..." value={tagInput}></input>
+          <button onClick={()=>handleSearch(tagInput)}>Search</button>
+        </div>
+
+      </div>
+    );
+  }
 }
 
 export default Filter;
