@@ -7,8 +7,14 @@ function AddNewNote({ noteText, setNoteText, addNewNote }) {
     }
 
     function handleSave () {
-        addNewNote(noteText);
-        setNoteText("");
+        if (noteText === "") {
+            document.querySelector('.add-note div input').classList.add('error');
+        }
+        else {
+            if (document.querySelector('.add-note div input').classList.contains('error')) document.querySelector('.add-note div input').classList.remove('error')
+            addNewNote(noteText);
+            setNoteText("");
+        }
     }
 
   return (

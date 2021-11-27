@@ -12,10 +12,25 @@ function App() {
   let [notes, setNotes] = useState([
     {
       id: nanoid(),
-      tags: ['#1', '#2', '#3'],
-      text: 'Hello',
+      tags: ['#shop', '#money'],
+      text: "Go shopping. Don't forget to take money",
       hidden: false
-    }
+    },
+
+    {
+      id: nanoid(),
+      tags: ['#bills', '#money'],
+      text: "Pay bills",
+      hidden: false
+    },
+
+    {
+      id: nanoid(),
+      tags: ['#shop', '#cat-food'],
+      text: "Buy cat food",
+      hidden: false
+    },
+
   ]);
 
   function addNewNote(text, id=nanoid()) {
@@ -32,6 +47,8 @@ function App() {
   }
 
   function removeTag (text, id, tag) {
+    removeFilter();
+    
     let currentNote = notes.find((el) => el.id === id);
     let currentTagList = currentNote.tags;
     let newTagList = currentTagList.filter((el)=>el!==tag)
@@ -44,7 +61,6 @@ function App() {
     }
 
     setNotes([...notes.filter((el) => el.id !== id), updatedNote]);
-    filter();
   }
 
   function removeNote (id) {

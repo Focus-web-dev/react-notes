@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'variables.scss';
 @import 'clean-css';
 
 @import 'app';
@@ -35,4 +35,8 @@ button {
         background: $black;
         color: $white;
     }
+}
+
+.error {
+    box-shadow: $boxShadowRed;
 }

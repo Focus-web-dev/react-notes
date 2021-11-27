@@ -11,9 +11,16 @@ function Filter({ filter, tags, setTags, removeFilter }) {
   }
 
   function handleSearch (tagInput) {
-    setTags(tagInput);
-    setTagInput("");
-    filter(tagInput);
+    if (tagInput === "") {
+      document.querySelector('.filter-input input').classList.add('error');
+    }
+    else {
+      if (document.querySelector('.filter-input input').classList.contains('error')) document.querySelector('.filter-input input').classList.remove('error');
+      
+      setTags(tagInput);
+      setTagInput("");
+      filter(tagInput);
+    }
   }
 
   if (tags !== "") {
