@@ -13,6 +13,15 @@
     align-items: center;
 
     box-shadow: $boxShadow;
+
+    @media screen and (max-width: 1024px) {
+        border-radius: 15px;
+    }
+
+    @media screen and (max-width: 512px) {
+        margin: 20px 0px;
+        padding: 15px;
+    }
 }
 
 .note-content {

@@ -22,6 +22,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 512px) {
+        flex-direction: column;
+    }
 }
 
 .add-note input {
@@ -35,6 +39,22 @@
         width: 600px;
         border: 1px solid $black;
     }
+
+    @media screen and (max-width: 1024px) {
+        width: 150px;
+        &:focus {
+            width: 300px;
+            border: 1px solid $black;
+        }
+    }
+
+    @media screen and (max-width: 512px) {
+        width: 100px;
+        &:focus {
+            width: 200px;
+            border: 1px solid $black;
+        }
+    }
 }
 
 .add-note button {
@@ -45,5 +65,11 @@
     &:hover {
         background: $black;
         color: $white;
+    }
+
+    @media screen and (max-width: 512px) {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 10px;
     }
 }

@@ -16,12 +16,27 @@
     align-items: center;
 
     width: 100%;
+
+    @media screen and (max-width: 512px) {
+        flex-direction: column;
+    }
+}
+
+.filter-input button {
+    @media screen and (max-width: 512px) {
+        width: 200px;
+    }
 }
 
 .bx-search {
     font-size: 32px;
     color: $black;
     margin-right: 15px;
+
+    @media screen and (max-width: 512px) {
+        flex-direction: column;
+        margin-right: 0;
+    }
 }
 
 .filter input {
@@ -36,6 +51,15 @@
         width: 300px;
         border: 1px solid $black;
     }
+
+    @media screen and (max-width: 512px) {
+        margin: 15px;
+        width: 200px;
+        &:focus {
+            width: 200px;
+            border: 1px solid $black;
+        }
+    } 
 }
 
 .tags {
