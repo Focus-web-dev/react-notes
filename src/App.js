@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {nanoid} from 'nanoid';
 
 import Filter from './components/Filter';
@@ -48,7 +48,7 @@ function App() {
 
   function removeTag (text, id, tag) {
     removeFilter();
-    
+
     let currentNote = notes.find((el) => el.id === id);
     let currentTagList = currentNote.tags;
     let newTagList = currentTagList.filter((el)=>el!==tag)
@@ -89,6 +89,23 @@ function App() {
     notes.map((el)=>el.hidden === true ? el.hidden = false : el.hidden);
     setNotes([...notes]);
   }
+
+  useEffect(() => {
+    let savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'));
+
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+
+  }, []);
+
+  useEffect(() => {
+    notes.map((el)=>el.hidden=false);
+    localStorage.setItem(
+      'react-notes-app-data',
+      JSON.stringify(notes)
+    );
+  }, [notes]);
 
   return (
     <div className="App">
